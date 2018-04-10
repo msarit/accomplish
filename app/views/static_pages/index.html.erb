@@ -4,6 +4,35 @@
   </header>
 
   <section class="main">
-
+    <ul class="todo-list">
+      
+    </ul>
   </section>
 </section>
+
+<script>
+  $(function() {
+    $.get("/tasks").success( function( data ) {
+      
+      var htmlString = "";
+
+      $.each(data, function (index,task) {
+        var liElement = '<li><div class="view"><input class="toggle" type="checkbox"><label>' + task.title +
+        '</label></div></li>';
+        htmlString += liElement;
+      });
+
+      var ulTodos = $('.todo-list');
+
+      ulTodos.html(htmlString);
+    
+    });
+  });
+</script>
+
+
+<!-- First initiate an HTTP GET request to "/tasks" -->
+<!-- Next, call "success" method on the object returned by "$.get" -->
+<!-- This allows us to trigger code in a callback when a successful response happens -->
+<!-- Pass through the code we want to trigger upon a successful HTTP response -->
+<!-- The argument "data" has access to the result of the HTTP response -->
