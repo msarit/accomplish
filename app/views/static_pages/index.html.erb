@@ -1,8 +1,15 @@
 <section class="todoapp">
   <header class="header">
     <h1>Get It Done!</h1>
+    <div class="stats">
+      <span>Done: <%= @complete %></span>   
+      <span>Not Done: <%= @incomplete %></span><br />
+      <% if @tasks.count > 0 %>
+        <span><%= @accomplished %>% accomplished!</span>
+      <% end %>
+    </div>
     <form id="new-form">
-      <input type="text" class="new-todo" placeholder="What do you need to get done?" />
+      <input type="text" class="new-todo" placeholder="Add a task:" />
     </form>
   </header>
 

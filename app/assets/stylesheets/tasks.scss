@@ -2,9 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import "font-awesome";
+
 html,
 body {
-  margin: 0;
+  margin: 30px;
   padding: 0;
 }
 
@@ -42,6 +44,12 @@ input[type="checkbox"] {
   outline: none;
 }
 
+.fa-minus-circle {
+  float: right;
+  margin: 15px 20px 0px 0px;
+  color: rgba(175, 47, 47, 0.65);
+}
+
 .hidden {
   display: none;
 }
@@ -57,32 +65,52 @@ input[type="checkbox"] {
 .todoapp input::-webkit-input-placeholder {
   font-style: italic;
   font-weight: 300;
-  color: #e6e6e6;
+  color: #5c5c5c;
+  padding-left: 10px;
 }
 
 .todoapp input::-moz-placeholder {
   font-style: italic;
   font-weight: 300;
-  color: #e6e6e6;
+  color: #5c5c5c;
+  padding-left: 10px;
 }
 
 .todoapp input::input-placeholder {
   font-style: italic;
   font-weight: 300;
-  color: #e6e6e6;
+  color: #5c5c5c;
+  padding-left: 10px;
 }
 
 .todoapp h1 {
-  position: absolute;
-  top: -155px;
+  position: absolute; /* fixed absolute sticky relative static */
+  top: -185px;
   width: 100%;
   font-size: 100px;
   font-weight: 100;
   text-align: center;
-  color: rgba(175, 47, 47, 0.15);
+  color: rgba(175, 47, 47, 0.65);
   -webkit-text-rendering: optimizeLegibility;
   -moz-text-rendering: optimizeLegibility;
   text-rendering: optimizeLegibility;
+}
+
+.stats {
+  position: absolute;
+  top: -45px;
+  text-align: center;
+  width: 100%;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.stats span + span {
+  padding-left: 20px;
+}
+
+.stats span {
+  margin: 0 auto;
 }
 
 .new-todo,
@@ -106,7 +134,7 @@ input[type="checkbox"] {
 }
 
 .new-todo {
-  padding: 16px 16px 16px 60px;
+  padding: 16px 16px 16px 50px;
   border: none;
   background: rgba(0, 0, 0, 0.003);
   box-shadow: inset 0 -2px 1px rgba(0,0,0,0.03);
@@ -194,7 +222,7 @@ label[for='toggle-all'] {
 }
 
 .todo-list li .toggle:checked:after {
-  content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-10 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="#bddad5" stroke-width="3"/><path fill="#5dc2af" d="M72 25L42 71 27 56l-4 4 20 20 34-52z"/></svg>');
+  content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-10 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="#bddad5" stroke-width="3"/><path fill="#67cf47" d="M72 25L42 71 27 56l-4 4 20 20 34-52z"/></svg>');
 }
 
 .todo-list li label {
@@ -376,9 +404,18 @@ html .clear-completed:active {
   }
 }
 
-@media (max-width: 430px) {
+@media (max-width: 550px) {
   .footer {
     height: 50px;
+  }
+
+  .todoapp h1 {
+    font-size: 70px;
+    top: -160px;
+  }
+
+  .stats {
+    top: -47px;
   }
 
   .filters {

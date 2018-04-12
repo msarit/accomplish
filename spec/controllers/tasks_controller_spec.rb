@@ -2,16 +2,28 @@ require 'rails_helper'
 
 RSpec.describe TasksController, type: :controller do
 
-  describe "tasks#create" do
-    it "should allow new tasks to be created" do
-      post :create, params: {task: { title: "Feed Baby" }}
-      expect(response).to have_http_status(:success)
+  describe "tasks#destroy" do
+    it "should allow tasks to be destroyed" do
+      task1 = FactoryBot.create(:task)
 
-      response_value = ActiveSupport::JSON.decode(@response.body)
-      expect(response_value['title']). to eq("Feed Baby")
-      expect(Task.last.title).to eq("Feed Baby")
+      delete :destroy, params: {id: task1.id}
+      expect(response).to have_http_status(:success)
+      
+      # response_value = ActiveSupport::JSON.decode(@response.body)
+      # expect(response_value['title']).to eq nil
     end
   end
+
+  # describe "tasks#create" do
+  #   it "should allow new tasks to be created" do
+  #     post :create, params: {task: { title: "Feed Baby" }}
+  #     expect(response).to have_http_status(:success)
+
+  #     response_value = ActiveSupport::JSON.decode(@response.body)
+  #     expect(response_value['title']).to eq("Feed Baby")
+  #     expect(Task.last.title).to eq("Feed Baby")
+  #   end
+  # end
 
   # describe "tasks#index" do
   #   it "should list the tasks in the database" do

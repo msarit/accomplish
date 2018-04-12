@@ -5,13 +5,14 @@ $(function() {
   // <li> tags
   function taskHtml(task) {
     var checkedStatus = task.done ? "checked" : "";
-    var liClass = task.done? "completed" : "";
+    var liClass = task.done ? "completed" : "";
     
-    var liElement = '<li  id="listItem-' + task.id + '" class="' + liClass + '">' + 
+    var liElement = '<li id="listItem-' + task.id + '" class="' + liClass + '">' + 
+    '<a href="#"><i class="fa fa-minus-circle delete" data-id="' + task.id + '" aria-hidden="true" ></i></a>' +
     '<div class="view"><input class="toggle" type="checkbox"' + " data-id='" + 
     task.id + "'" + 
     checkedStatus + 
-    '><label>' + 
+    ' /><label>' + 
     task.title + 
     '</label></div></li>';
     
@@ -23,7 +24,6 @@ $(function() {
   // an API request to toggle the value of the 'done' field
   function toggleTask(e) {
     var itemId = $(e.target).data("id");
-    
     var doneValue = Boolean($(e.target).is(':checked'));
 
     $.post("/tasks/" + itemId, {
@@ -34,8 +34,10 @@ $(function() {
       var $li = $("#listItem-" + data.id);
       $li.replaceWith(liHtml);
       $('.toggle').change(toggleTask);
+      location.reload();
     });
   };
+
   
   $.get("/tasks").success(function(data) {
     var htmlString = "";
@@ -47,8 +49,20 @@ $(function() {
     var ulTodos = $('.todo-list');
     ulTodos.html(htmlString);
 
-    $('.toggle').change(toggleTask);
+    $('.toggle').change(toggleTask); // When one of the things with class="toggle" changes, call toggleTask
+    $('.delete').click(deleteTask);
   });
+
+
+  function deleteTask(e) {
+    var itemId = $(e.target).data("id");
+    debugger;
+    $.post("/tasks/" + itemId, {
+      _method: "DELETE"
+    }).success(function() {
+      location.reload();
+    });
+  };
 
   $('#new-form').submit(function(event) {
     event.preventDefault();
@@ -61,6 +75,12 @@ $(function() {
       ulTodos.append(htmlString);
       $('.toggle').click(toggleTask);
       $('.new-todo').val('');
+      location.reload();
     });
   });
 });
+
+
+
+
+
