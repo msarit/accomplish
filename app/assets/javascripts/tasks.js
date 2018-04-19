@@ -34,7 +34,6 @@ $(function() {
       var $li = $("#listItem-" + data.id);
       $li.replaceWith(liHtml);
       $('.toggle').change(toggleTask);
-      location.reload();
     });
   };
 
@@ -56,11 +55,11 @@ $(function() {
 
   function deleteTask(e) {
     var itemId = $(e.target).data("id");
-    debugger;
     $.post("/tasks/" + itemId, {
       _method: "DELETE"
-    }).success(function() {
-      location.reload();
+    }).success(function(data) {
+      // debugger;
+      $("#listItem-" + data.id).remove();
     });
   };
 
@@ -74,8 +73,8 @@ $(function() {
       var ulTodos = $('.todo-list');
       ulTodos.append(htmlString);
       $('.toggle').click(toggleTask);
+      $('.delete').click(deleteTask);
       $('.new-todo').val('');
-      location.reload();
     });
   });
 });
