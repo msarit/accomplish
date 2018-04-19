@@ -6,8 +6,9 @@ class StaticPagesController < ApplicationController
     @complete = @tasks.where(done: true).count
     @incomplete = @tasks.where(done: false).count
     
-    accomplished = (@complete.to_f / (@complete.to_f + @incomplete.to_f)) * 100
-    
+    if @tasks.count != 0
+    accomplished = (@complete / (@tasks.count)) * 100
     @accomplished = accomplished.to_f.round(0)
+    end
   end
 end
