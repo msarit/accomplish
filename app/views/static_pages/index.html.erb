@@ -2,11 +2,8 @@
   <header class="header">
     <h1>Get It Done!</h1>
     <div class="stats">
-      <span>Done: <%= @complete %></span>   
-      <span>Not Done: <%= @incomplete %></span><br />
-      <% if @tasks.count > 0 %>
-        <span><%= @accomplished %>% accomplished!</span>
-      <% end %>
+      <span>Completed:</span><span id="done"></span>
+      <span>Not Completed:</span><span id="not-done"></span>
     </div>
     <form id="new-form">
       <input type="text" class="new-todo" placeholder="Add a task:" />
@@ -21,5 +18,5 @@
 </section>
 
 <section class="author">
-  A <%= link_to "todo-mvc", "http://todomvc.com" %> application, built by <%= link_to "Arit Amana", "https://github.com/msarit" %>
+  A <%= link_to "todo-mvc", "http://todomvc.com" %> application, built by <%= link_to "Arit Amana", "https://github.com/msarit/accomplish" %>
 </section>
