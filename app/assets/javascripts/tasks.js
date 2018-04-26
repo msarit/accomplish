@@ -91,7 +91,6 @@ $(function() {
     };
 
     $.post("/tasks", payload).success(function(data) {
-      debugger;
 
       var htmlString = taskHtml(data.task);
       var ulTodos = $('.todo-list');
