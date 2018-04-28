@@ -3,7 +3,7 @@ class TasksController < ApplicationController
   def index
     resp = {
       properties: Task.counts,
-      tasks: Task.order(:id)
+      tasks: Task.order(:id).reverse_order
     }
 
     render json: resp     #Task.order(:id) # the controller won't seek an index.html.erb file to render;

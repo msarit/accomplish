@@ -94,7 +94,7 @@ $(function() {
 
       var htmlString = taskHtml(data.task);
       var ulTodos = $('.todo-list');
-      ulTodos.append(htmlString);
+      ulTodos.prepend(htmlString);
   
       $('.toggle').click(toggleTask);
       $('.delete').click(deleteTask);
