@@ -1,5 +1,10 @@
 $(function() {
 
+  function handleProperties(properties){
+    setDone(properties.done);
+    setNotDone(properties.not_done);
+  };
+
   function setDone(val) {
     $("#done").html(val);
   };
@@ -45,8 +50,7 @@ $(function() {
       $li.replaceWith(liHtml); // writing over what was there previously
       $('.toggle').change(toggleTask);
 
-      setDone(data.properties.completed);
-      setNotDone(data.properties.incomplete);
+      handleProperties(data.properties);
     });
   };
 
@@ -54,8 +58,7 @@ $(function() {
   $.get("/tasks").success(function(data) {
     var htmlString = "";
 
-    setDone(data.properties.completed);
-    setNotDone(data.properties.incomplete);
+    handleProperties(data.properties);
 
     $.each(data.tasks, function (index,task) {
       htmlString += taskHtml(task);
@@ -75,8 +78,9 @@ $(function() {
     $.post("/tasks/" + itemId, {
       _method: "DELETE"
     }).success(function(data) {
-      setDone(data.properties.completed);
-      setNotDone(data.properties.incomplete);
+      
+      handleProperties(data.properties);
+      
       $("#listItem-" + data.task.id).remove();
     });
   };
@@ -100,8 +104,7 @@ $(function() {
       $('.delete').click(deleteTask);
       $('.new-todo').val('');
 
-      setDone(data.properties.completed);
-      setNotDone(data.properties.incomplete);
+      handleProperties(data.properties);
     });
   });
 });
