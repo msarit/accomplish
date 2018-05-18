@@ -1,24 +1,18 @@
-# README
+## Accomplish
+A dynamic online to-do app that allows task creation, updating, deleting and toggling of "done" status.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Features
+* Built on Rails
+* Mobile-responsive
+* Leverages Javascript to dynamically add, edit, delete and toggle tasks as done/not-done
+* Fetches task data using RESTful JSON APIs from Rails
 
-Things you may want to cover:
+## Build status
+(coming soon)
 
-* Ruby version
+## Screenshots
+![alt tag](https://image.ibb.co/kbPMy8/accomplish_screenshot.png)
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Credits
+* [ToDoMVC](http://todomvc.com)
+* [The Firehose Project](https://thefirehoseproject.com)
