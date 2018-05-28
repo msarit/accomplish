@@ -8,7 +8,7 @@ A dynamic online to-do app that allows task creation, updating, deleting and tog
 * Fetches task data using RESTful JSON APIs from Rails
 
 ## Build status
-(coming soon)
+[![Build Status](https://travis-ci.org/msarit/accomplish.svg?branch=master)](https://travis-ci.org/msarit/accomplish)
 
 ## Screenshots
 ![alt tag](https://image.ibb.co/kbPMy8/accomplish_screenshot.png)
